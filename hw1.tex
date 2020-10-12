@@ -1,0 +1,112 @@
+\documentclass[letter, 12pt]{article}
+\usepackage[tmargin=1in,lmargin=1in,rmargin=1in,bmargin=1in,paper=letterpaper]{geometry}
+\IfFileExists{minionpro.sty}
+        {\usepackage[mathlf,textlf,minionint]{minionpro}}
+        {\message{***Minion Pro not available***}}
+% -------------------------------------------------------------
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{framed}
+\usepackage{enumerate}
+\usepackage{ifthen}
+
+\input{basicpreamble}
+% -------------------------------------------------------------
+\newif\ifpdf \ifx\pdfoutput\undefined
+\pdffalse
+\else
+\pdftrue
+\fi
+\ifpdf
+\usepackage[stretch=40,step=8,selected=true]{microtype}  % allow font expansion up to +/- 4% of normal width
+\usepackage[pdftex]{graphicx}
+\else
+\usepackage[dvips]{graphicx}
+\fi
+% -------------------------------------------------------------
+% END OF PACKAGES LOADED
+\begin{document}
+
+\parindent=0in
+\newcounter{probnum}
+\stepcounter{probnum}
+\newenvironment{problem}[1][]
+   {\begin{framed} \textbf{Problem \theprobnum: #1}}
+   {\end{framed}\stepcounter{probnum}}
+\newenvironment{bookproblem}[1]
+   {\begin{framed} \textbf{Problem #1:}}
+   {\end{framed}\stepcounter{probnum}}
+%%%%%END OF HEADER
+
+\begin{flushright}
+Connie Okasaki \\
+AMATH 584\\
+Assignment 1\\
+9 October 2020
+\end{flushright}
+
+%%=========== PROBLEM 1 ============= UNFINISHED ============%%
+\begin{problem}
+Show that if matrix $A$ is triangular and unitary, then it is diagonal.
+\end{problem}
+
+Suppose that $A$ is upper triangular. Since it is unitary its columns are orthogonal and have unit length. The first column must therefore be of the form $(a_{11},0,0,....,0)$ where $\norm{a_{11}}=1$. Now suppose by induction that the first $k$ columns are diagonal, i.e. each consists of a single norm-1 complex entry on the diagonal. The $k+1$st column must be orthogonal to the first $k$ columns. In order to achieve this, each inner product $\inner{a_{k+1},a_i} = a_{k+1,i}a_{ii} = 0$. Therefore, since $a_{ii}$ is non-zero $a_{k+1,i}=0$, and $a_{k+1}$ is of the same diagonal form. Therefore the whole matrix $A$ is diagonal. The same holds for lower-triangular matrices, where we induct from $a_{nn}$ instead of $a_{11}$. 
+
+\pagebreak
+
+
+%%=========== PROBLEM 2 ============= UNFINISHED ============%%
+\begin{problem}
+Consider that the matrices $A\in \C^{n\times m}$ and $B\in\C^{n\times m}$ are Hermitian (self-adjoint)
+\begin{enumerate}[(a)]
+\item Prove that all eigenvalues $\lambda_k$ of $A$ are real
+\item Prove that if $x_k$ is the $k$th eigenvector, then eigenvectors with distinct eigenvalues are orthogonal
+\item Prove the sum of two Hermitian matrices is Hermitian
+\item Prove the inverse of an invertible Hermitian matrix is Hermitian as well
+\item Prove the produce of two Hermitian matrices is Hermitian if and only if $AB=BA$.
+\end{enumerate}		
+\end{problem}
+
+\begin{enumerate}[(a)]
+\item By definition of the adjoint has the property $\inner{Ax_k,x_k} = \inner{x_k,A^*x_k}$. Similarly, for scalars $\inner{cx_k,x_k} = \inner{x_k,\overline{c}x_k}$. Therefore,
+\[
+\inner{\lambda x_k,x_k} = \inner{A x_k,x_k} = \inner{x_k,A^*x_k} = \inner{x_k,Ax_k} = \inner{x_k,\lambda x_k} = \inner{\overline{\lambda}x_k,x_k}.
+\]
+Therefore, $\lambda = \overline{\lambda}$ is a real number.
+\item Suppose $\lambda_k \neq \lambda_i$. Since these eigenvalues are distinct at least one must be nonzero, and without loss of generality let that be $\lambda_k$. Then
+\[
+\inner{x_k,x_i} = \lambda_k^{-1}\inner{\lambda_kx_k,x_i} = \lambda_k^{-1}\inner{Ax_k,x_i} = \lambda_k^{-1}\inner{x_k,Ax_i} = \lambda_k^{-1}\inner{x_k,\lambda_ix_i} = \frac{\lambda_i}{\lambda_k}\inner{x_k,x_i}.
+\]
+If $\lambda_i=0$ then $\inner{x_k,x_i} = 0$. Otherwise, nevertheless $\frac{\lambda_i}{\lambda_k}\neq 1$ so $\inner{x_k,x_i}=0$.
+\item The adjoint operation is distributive so therefore $(A+B)^* = A^* + B^* = A+B$. 
+\item Suppose here that $n=m$. Then $I = (AA^{-1}) = (A^{-1})^*A^* = (A^{-1})^*A$. Therefore since the inverse of $A$ is unique, $(A^{-1})^* = A^{-1}$.
+\item Suppose here that $B \in \C^{m\times ell}$. Then $(AB)^* = B^*A^* = BA$. Therefore, $(AB)^* = AB$ if and only if $BA=AB$.
+
+\end{enumerate}
+
+\pagebreak
+
+%%=========== PROBLEM 3 ============= UNFINISHED ============%%
+\begin{problem}
+Consider the matrix $U\in \C^{n\times m}$ which is unitary
+\begin{enumerate}[(a)]
+\item Prove that the matrix is diagonalizable
+\item Prove that the inverse is $U^{-1}=U^*$.
+\item Prove it is isometric with respect to the $\ell_2$ norm, i.e. $\norm{Ux} = \norm{x}$
+\item Prove that all eigenvalues have modulus unity.
+\end{enumerate}
+\end{problem}
+
+We will assume here that $n=m$.
+\begin{enumerate}[(a)]
+\item The spectral theorem states that complex normal matrices have an orthonormal basis consisting of eigenvectors of $U$. Since $U$ is unitary, $U$ is normal, so simply choose $V$ as the transformation into the given orthonormal basis and $U = VDV^{-1}$.
+\item Since the columns are orthogonal and have norm 1, $U^*U = I$. Therefore $U^{-1} = U^*$.
+\item $\norm{Ux} = \inner{Ux,Ux} = \inner{x,U^*Ux} = \inner{x,x} = \norm{x}$
+\item $\norm{x} = \norm{Ux} = \norm{\lambda x} = \norm{\lambda}\norm{x}$. Therefore $\norm{\lambda}=1$.
+\end{enumerate}
+
+\pagebreak
+
+\end{document}	
