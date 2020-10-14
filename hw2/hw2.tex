@@ -47,6 +47,37 @@ Assignment 2\\
 16 Oct 2020
 \end{flushright}
 
+\textbf{Yale Faces}
+
+The $V$ matrix can be interpreted as a set of unit length, orthogonal "eigenfaces" which act as a basis for the training set. The $U$ matrix can be interpreted as being the decomposition of each actual face into loading coefficients for each eigenface. Finally, the $\Sigma$ matrix can be interpreted as measuring the relative importance of each "eigenface" in reconstructing the dataset: low singular values mean the eigenface has generally low coefficients across all faces. The singular value spectrum looks like the following (on a log-scale)
+\includegraphics{logscale.png}
+So the first 10-20 eigenfaces are by far the most important, and the last 100 or so are by far the least. We can see that the first 3 eigenfaces construct a generic average face
+\begin{center}
+\includegraphics[width=0.8\textwidth]{reconstruction.png}
+\end{center}
+while the first 20 introduce major artifacts such as shadowing
+\begin{center}
+\includegraphics[width=0.8\textwidth]{reconstruction20.png}
+\end{center}
+Note that in order to construct these images we did have to bound the reconstructed vectors between 0 and 127. For the cropped faces, the eigenfaces provide useful insight into just what the basis vectors represent
+\begin{center}
+\includegraphics[width=0.8\textwidth]{modes.png}
+\end{center}
+We can see that for this dataset, most of the dominant modes represent actual interpretable facial features. In comparison, for the uncropped faces, the dominant modes largely represent positioning of the face in the image:
+\begin{center}
+\includegraphics[width=0.8\textwidth]{position.png}
+\end{center}
+Due to this problem, image reconstruction is much poorer quality with even 20 modes providing only rough, blurred out features
+\begin{center}
+\includegraphics[width=0.8\textwidth]{uncropped_recon.png}
+\end{center}
+The decay, however, looks broadly similar:
+\begin{center}
+\includegraphics[width=0.8\textwidth]{uncrop_decay.png}
+\end{center}
+
+\pagebreak
+
 %%=========== PROBLEM 1 ============= UNFINISHED ============%%
 \begin{problem}
 Show that for a matrix $A$
