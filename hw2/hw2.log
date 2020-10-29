@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  14 OCT 2020 11:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  14 OCT 2020 12:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -378,12 +378,16 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \c@probnum=\count118
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 52.
 
+Underfull \hbox (badness 10000) in paragraph at lines 52--53
+
+ []
+
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 54.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 52.
+LaTeX Font Info:    Try loading font information for U+msa on input line 54.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -391,7 +395,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/local/texlive/2018/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 52.
+LaTeX Font Info:    Try loading font information for U+msb on input line 54.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -402,44 +406,45 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 <logscale.png, id=1, 387.4475pt x 251.94125pt>
 File: logscale.png Graphic file (type png)
 <use logscale.png>
-Package pdftex.def Info: logscale.png  used on input line 53.
+Package pdftex.def Info: logscale.png  used on input line 55.
 (pdftex.def)             Requested size: 387.44655pt x 251.94063pt.
 <reconstruction.png, id=3, 696.6025pt x 362.35374pt>
 File: reconstruction.png Graphic file (type png)
 <use reconstruction.png>
-Package pdftex.def Info: reconstruction.png  used on input line 56.
+Package pdftex.def Info: reconstruction.png  used on input line 58.
 (pdftex.def)             Requested size: 375.80544pt x 195.48564pt.
  [1
 
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./logsc
-ale.png> <./reconstruction.png>]
-<reconstruction20.png, id=14, 696.6025pt x 362.35374pt>
+ale.png>]
+<reconstruction20.png, id=13, 696.6025pt x 362.35374pt>
 File: reconstruction20.png Graphic file (type png)
 <use reconstruction20.png>
-Package pdftex.def Info: reconstruction20.png  used on input line 60.
+Package pdftex.def Info: reconstruction20.png  used on input line 62.
 (pdftex.def)             Requested size: 375.80544pt x 195.48564pt.
-<modes.png, id=15, 1047.915pt x 449.68pt>
+<modes.png, id=14, 1047.915pt x 449.68pt>
 File: modes.png Graphic file (type png)
 <use modes.png>
-Package pdftex.def Info: modes.png  used on input line 64.
+Package pdftex.def Info: modes.png  used on input line 66.
 (pdftex.def)             Requested size: 375.80544pt x 161.26027pt.
-<position.png, id=16, 1048.91875pt x 394.47375pt>
+[2 <./reconstruction.png> <./reconstruction20.png> <./modes.png>]
+<position.png, id=21, 1048.91875pt x 394.47375pt>
 File: position.png Graphic file (type png)
 <use position.png>
-Package pdftex.def Info: position.png  used on input line 68.
+Package pdftex.def Info: position.png  used on input line 70.
 (pdftex.def)             Requested size: 375.80544pt x 141.33026pt.
- [2 <./reconstruction20.png> <./modes.png> <./position.png>]
-<uncropped_recon.png, id=23, 712.6625pt x 324.21124pt>
+<uncropped_recon.png, id=22, 712.6625pt x 324.21124pt>
 File: uncropped_recon.png Graphic file (type png)
 <use uncropped_recon.png>
-Package pdftex.def Info: uncropped_recon.png  used on input line 72.
+Package pdftex.def Info: uncropped_recon.png  used on input line 74.
 (pdftex.def)             Requested size: 375.80544pt x 170.9654pt.
-<uncrop_decay.png, id=24, 371.3875pt x 248.93pt>
+<uncrop_decay.png, id=23, 371.3875pt x 248.93pt>
 File: uncrop_decay.png Graphic file (type png)
 <use uncrop_decay.png>
-Package pdftex.def Info: uncrop_decay.png  used on input line 76.
+Package pdftex.def Info: uncrop_decay.png  used on input line 78.
 (pdftex.def)             Requested size: 375.80544pt x 251.89589pt.
- [3 <./uncropped_recon.png> <./uncrop_decay.png>] [4] (./hw2.aux) ) 
+ [3 <./position.png> <./uncropped_recon.png>] [4 <./uncrop_decay.png>] [5] (./h
+w2.aux) ) 
 Here is how much of TeX's memory you used:
  5275 strings out of 492649
  81452 string characters out of 6129622
@@ -448,19 +453,18 @@ Here is how much of TeX's memory you used:
  12038 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,8n,38p,648b,199s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/
-texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/t
-exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
-xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/tex
-live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texli
-ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive
-/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/20
-18/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/201
-8/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on hw2.pdf (4 pages, 899825 bytes).
+</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmb
+x12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex
+10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi1
+2.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.
+pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pf
+b></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><
+/usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></
+usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on hw2.pdf (5 pages, 900184 bytes).
 PDF statistics:
- 64 PDF objects out of 1000 (max. 8388607)
- 35 compressed objects within 1 object stream
+ 67 PDF objects out of 1000 (max. 8388607)
+ 37 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  4644 words of extra memory for PDF output out of 10000 (max. 10000000)
 
