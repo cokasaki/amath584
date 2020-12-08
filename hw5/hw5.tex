@@ -1,0 +1,72 @@
+\documentclass[letter, 12pt]{article}
+\usepackage[tmargin=1in,lmargin=1in,rmargin=1in,bmargin=1in,paper=letterpaper]{geometry}
+\IfFileExists{minionpro.sty}
+        {\usepackage[mathlf,textlf,minionint]{minionpro}}
+        {\message{***Minion Pro not available***}}
+% -------------------------------------------------------------
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{framed}
+\usepackage{enumerate}
+\usepackage{ifthen}
+
+\input{basicpreamble}
+% -------------------------------------------------------------
+\newif\ifpdf \ifx\pdfoutput\undefined
+\pdffalse
+\else
+\pdftrue
+\fi
+\ifpdf
+\usepackage[stretch=40,step=8,selected=true]{microtype}  % allow font expansion up to +/- 4% of normal width
+\usepackage[pdftex]{graphicx}
+\else
+\usepackage[dvips]{graphicx}
+\fi
+% -------------------------------------------------------------
+% END OF PACKAGES LOADED
+\begin{document}
+
+\parindent=0in
+\newcounter{probnum}
+\stepcounter{probnum}
+\newenvironment{problem}[1][]
+   {\begin{framed} \textbf{Problem \theprobnum: #1}}
+   {\end{framed}\stepcounter{probnum}}
+\newenvironment{bookproblem}[1]
+   {\begin{framed} \textbf{Problem #1:}}
+   {\end{framed}\stepcounter{probnum}}
+%%%%%END OF HEADER
+
+\begin{flushright}
+Connie Okasaki \\
+AMATH 584\\
+Assignment 5\\
+7 December 2020
+\end{flushright}
+
+See github.com/cokasaki/amath584 for all code and figures.
+
+\begin{enumerate}
+	\item 
+	\begin{enumerate}[(a)]
+	\item The eigenvalues are all within a relatively small range.
+	\item I terminated my search using a threshold for absolute difference in the eigenvalue. By comparing at each step to the ground truth eigenvalue, I obtained a graph of both the error and the log-error over iterations. The error is exponentially decreasing, consistent with what we saw in class.
+	\item I chose my initial guesses using an automated binary search algorithm. Using power iteration we are able to find the largest eigenvalue, and bound all other eigenvalues in the range $(\pm|\lambda|)$. We may then use the midpoint as our $\mu$ value. The next eigenvalue we find is $\lambda_0$ which splits our bounds into two parts: $(-|\lambda|,-|\lambda_0|)$ and $(|\lambda_0|,|\lambda|)$. We may then recurse to find all remaining eigenvalues. Alternatively, to avoid using power iteration to find the largest eigenvalue: starting at $\mu = 0$ we can find the smallest absolute eigenvalue $\lambda_0$. This establishes two regions to search for the remaining eigenvalues $(-\infty,-|\lambda_0|)$ and $(|\lambda_0|,\infty)$. Then we choose a factor $k$ and search with $\mu = \pm k|\lambda_0|$ to find the next eigenvalue $\lambda$. If $\lambda = \lambda_0$ then we can expand the corresponding (upper, or lower) bound to, e.g. $(-|\lambda_0|, (2k-1)|\lambda_0|)$. However, if the closest eigenvalue is in the search region then we have created a ``hole'' of the form $(|\lambda_0|,\mu - |\mu-\lambda|)$ where eigenvalues could lie and new outer boundaries of the form $(|\lambda_0|,\mu + |\mu-\lambda|)$. We first search the hole (with hole boundaries $(b_0,b_1)$) starting from $\frac{b_0+b_1}{2}$ and recursing until no eigenvalues are found and the hole can be ruled out. Theoretically, if all eigenvalues are found with perfect precision, this algorithm is able to find all unique eigenvalues very efficiently and automatically. However, due to error when truncating the iterations, the algorithm often fails to identify ``duplicate'' nearby eigenvalues that are not in fact numerically identical. Moreover, it often incorrectly creates duplicate eigenvalues. 
+	\item In order to find these eigenvalues, I started with a complex eigenvector. Since we were no longer able to use the binary search algorithm, I used an adhoc choice of $k\exp(2\pi i/n)$ for $k$ equal to half the largest eigenvalue found by power iteration, as a evenly-spaced set of alternatives. This produced two duplicate, and missed the largest eigenvalue, so further searching would be necessary to find the remaining eigenvalues.
+	\end{enumerate}
+
+	\item
+	\begin{enumerate}[(a)]
+	\item The leading order SVD mode and dominant eigenvector are the same (although inverted, which makes no difference).
+	\item See code.
+	\item The randomized modes and true modes are broadly similar. All the top modes are highly averaged faces, providing a low rank basis primarily for determining which person is shown in the image.
+	\end{enumerate}
+\end{enumerate}
+
+
+\pagebreak
+
+\end{document}

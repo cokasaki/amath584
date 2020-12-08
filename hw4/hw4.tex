@@ -1,0 +1,98 @@
+\documentclass[letter, 12pt]{article}
+\usepackage[tmargin=1in,lmargin=1in,rmargin=1in,bmargin=1in,paper=letterpaper]{geometry}
+\IfFileExists{minionpro.sty}
+        {\usepackage[mathlf,textlf,minionint]{minionpro}}
+        {\message{***Minion Pro not available***}}
+% -------------------------------------------------------------
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{amsthm}
+\usepackage{amsfonts}		
+\usepackage{framed}
+\usepackage{enumerate}
+\usepackage{ifthen}
+
+\input{basicpreamble}
+% -------------------------------------------------------------
+\newif\ifpdf \ifx\pdfoutput\undefined
+\pdffalse
+\else
+\pdftrue
+\fi
+\ifpdf
+\usepackage[stretch=40,step=8,selected=true]{microtype}  % allow font expansion up to +/- 4% of normal width
+\usepackage[pdftex]{graphicx}
+\else
+\usepackage[dvips]{graphicx}
+\fi
+% -------------------------------------------------------------
+% END OF PACKAGES LOADED
+\begin{document}
+
+\parindent=0in
+\newcounter{probnum}
+\stepcounter{probnum}
+\newenvironment{problem}[1][]
+   {\begin{framed} \textbf{Problem \theprobnum: #1}}
+   {\end{framed}\stepcounter{probnum}}
+\newenvironment{bookproblem}[1]
+   {\begin{framed} \textbf{Problem #1:}}
+   {\end{framed}\stepcounter{probnum}}
+%%%%%END OF HEADER
+
+\begin{flushright}
+Connie Okasaki \\
+AMATH 584\\
+Assignment 4\\
+16 Nov 2020
+\end{flushright}
+
+%%=========== PROBLEM 1 ============= UNFINISHED ============%%
+\begin{problem}[]
+\begin{enumerate}[(a)]
+\item Consider the matrix $2I$. Determine its eigenvalues and the algebraic and geometric multiplicity of each.
+\item Consider the matrix \[ \begin{bmatrix} 2&1&0\\0&2&1\\0&0&2\end{bmatrix} \].
+\end{enumerate}
+\end{problem}
+
+\begin{enumerate}[(a)]
+\item We can first construct the characteristic polynomial $f(\lambda) = |2I-\lambda I| = (2-\lambda)^3$. Thus we find that this matrix has eigenvalue $\lambda=2$ with algebraic multiplicity 3. Then we can verify that any vector is an eigenvector so we can arbitrarily choose the three linearly independent unit vectors $e_1,e_2,$ and $e_3$ and we find that this eigenvalue also has geometric multiplicity 3.
+\item Now we can construct the characteristic polynomial \[f(\lambda) = \begin{bmatrix} 2-\lambda &1&0\\0&2-\lambda&1\\0&0&2-\lambda\end{bmatrix} = (2-\lambda)^3\]
+and we can see that again this matrix has eigenvalue $\lambda=2$ with algebraic multiplicity 3. However now, when we plug in $\lambda=2$ and attempt to solve
+\[
+\begin{bmatrix} 0&1&0\\0&0&1\\0&0&0\end{bmatrix}\begin{bmatrix} x\\y\\z\end{bmatrix} = \begin{bmatrix}y\\z\\0\end{bmatrix} = \begin{bmatrix}0\\0\\0\end{bmatrix}
+\]
+we find that $y=z=0$ and we may only choose $x$. Thus the nullspace of $M-2I$ is spanned by $e_1$ and we find that this eigenvalue has geometric multiplicity 1.
+\end{enumerate}
+
+
+\pagebreak
+
+%%=========== PROBLEM 2 ============= UNFINISHED ============%%
+\begin{problem}[]
+For each of the given statements, prove that it is true or give an example to show iut is false. Here $\bm{A}\in\C^{m\times m}$ unless otherwise indicated
+\end{problem}
+
+\begin{enumerate}[(a)]
+\item This is true: if $Av=\lambda v$ then
+\[
+(A-\mu I)v = Av - \mu v = \lambda v - \mu v = (\lambda-\mu)v
+\]
+so indeed $\lambda-\mu$ is an eigenvalue of $A-\mu I$
+\item This is false: consider the matrix $2I$ from problem 1 which has 2 but not -2 as an eigenvalue.
+\item This is true. The characteristic polynomial of a real matrix must have real coefficients. Therefore, it can be factored into a product of linear factors (corresponding to real eigenvalues, which are their own complex conjugate) and irreducible quadratic factors (corresponding to pairs of complex eigenvalues $\lambda,\overline{\lambda}$).
+\item This is true. If $A$ is nonsingular and $Av=\lambda v$ then $v = A^{-1}\lambda v$ and $A^{-1}v = \lambda^{-1}v$.
+\item This is false. Consider the matrix $\begin{bmatrix} 0 & 1 \\ 0 & 0\end{bmatrix}$. This matrix has characteristic polynomial $f(\lambda) = \lambda^2$ and therefore has only zero eigenvalues.
+\item This is true. We showed in HW 2 that the nonzero singular values are the square roots of the nonzero eignevalues of $AA^*$. If $A=A*$ and $AV=V\Lambda$ then $AA^*V = A(AV) = A(V\Lambda) = V\Lambda^2$ so we see that indeed the singular values of a hermitian matrix $A$ are the square roots of its eigenvalues squared, or $|\lambda|$.
+\item This is true. If $A$ is diagonalizable then $A=P^{-1}DP$ for some invertible matrix $P$. Furthermore if $AV=V(\lambda I) = \lambda V$ then $P^{-1}DP V = \lambda V$ and $DPV = \lambda PV$ and we see that $D=\lambda I$. However, since constant multiples of $I$ commute, we then see that $A=P^{-1}(\lambda I)P = (\lambda I)P^{-1}P = \lambda I$. 
+\end{enumerate}
+
+%%=========== PROBLEM 3 ============= UNFINISHED ============%%
+\begin{problem}[]
+Let $\bm{A}\in\C^{m\times m}$ be tridiagonal and Hermitian, with all its sub- and super-diagonal entries nonzero. Prove that the eigenvalues of $\bm{A}$ are distinct (Hint: Show that for any $\lambda\in\C,\bm{A}-\lambda\bm{I}$ has rank at least $m-1$.)
+\end{problem}
+For any $\lambda\in \C$, the first $m-1$ columns of $A-\lambda I$ are linearly independent since any linear combination of columns contains a nonzero entry corresponding to the right-most column included. Since $A-\lambda I$ has rank at least $m-1$, therefore the nullspace has rank at most 1. Therefore each eigenvalue has geometric multiplicity at most 1, and therefore algebraic multiplicity at most 1. Since there are no repeated eigenvalues, each eigenvalue is distinct.
+
+\pagebreak
+
+\end{document}

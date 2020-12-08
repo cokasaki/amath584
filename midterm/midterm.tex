@@ -1,0 +1,108 @@
+\documentclass[letter, 12pt]{article}
+\usepackage[tmargin=1in,lmargin=1in,rmargin=1in,bmargin=1in,paper=letterpaper]{geometry}
+
+% -------------------------------------------------------------
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{enumerate}
+\usepackage{framed}
+
+\input{basicpreamble}
+\newcounter{probnum}
+\stepcounter{probnum}
+\newenvironment{problem}[1][]
+   {\begin{framed} \textbf{Problem \theprobnum: #1}}
+   {\end{framed}\stepcounter{probnum}}
+\newenvironment{bookproblem}[1]
+   {\begin{framed} \textbf{Problem #1:}}
+   {\end{framed}\stepcounter{probnum}}
+% -------------------------------------------------------------
+% END OF PACKAGES LOADED
+
+
+\title{AMATH 584 Midterm}
+\author{Connie Okasaki}
+
+\begin{document}
+\maketitle
+
+%%=========== PROBLEM 1 ============= UNFINISHED ============%%
+\begin{problem}[]
+Prove that the $LU$ decomposition of a matrix $\bm{A}$ is unique.
+\end{problem}
+
+Suppose that the matrix $A$ has two different decompositions, $LU$ and $L'U'$. Then since $LU=L'U'$ we have that $L'^{-1}L = U'U^{-1}$. Since the inverse of an upper (lower) triangular matrix is also an upper (lower) triangular matrix, and the product of two upper (lower) triangular matrices is also an upper (lower) triangular matrix, we see that $U'U^{-1}$ is upper triangular amd $L'^{-1}L$ is lower triangular. Therefore both are diagonal: $L'^{-1}L = D = U'U^{-1}$. Therefore $L = L'D$ and $U = D^{-1}U'$ and the $LU$ decomposition is indeed unique up to multiplication by a diagonal matrix and its inverse.
+
+%%=========== PROBLEM 2 ============= UNFINISHED ============%%
+\begin{problem}[]
+Show that the largest singular value of a matrix $\bm{A}\in \C^{m\times n}$ is given by
+\[
+\sigma_{\rm max}(\bm{A}) = \max_{\bm{x}\in \R^n,\bm{y}\in \R^m} \frac{\bm{y}^T\bm{A}\bm{x}}{\norm{\bm{x}}_2\norm{\bm{y}}_2}
+\]
+\end{problem}
+
+
+
+Let $\bm{A} = \bm{U}\bm{\Sigma}\bm{V}^*$ be the singular value decomposition of $\bm{A}$. Then 
+\begin{align*}
+\bm{y}^T\bm{A}\bm{x} 
+& = (\bm{y}^T\bm{U})\bm{\Sigma}(\bm{V}^*\bm{x}) \\
+& = \bm{u}^T\bm{\Sigma}\bm{v} \\
+& = \sum_{i=1}^n \sigma_{ii}u_iv_i
+\end{align*}
+Since $U$ and $V$ are unitary, they preserve the 2-norm so if we require that $x$ and $y$ be unit vectors, then so are $u$ and $v$. However for a diagonal matrix $D$ the maximum inner product $u^TDv$ for unit vectors $u$ and $v$ is $D_{\rm max}$, achieved when $u=v$ points in the direction of the largest entry of $D$. In any other direction:
+\[
+u^TDv = \norm{u}\norm{Dv}\cos(\theta) \leq \norm{Dv} = \sum_{i=1}^n D_i^2v_i^2 \leq \sum_{i=1}^n D_{\rm max}^2v_i^2 = D_{\rm \max}.\]
+Therefore the maximum of $\bm{y}^T\bm{A}\bm{x}$ is the maximum singular value.
+
+%First consider the basic fact that for two vectors $u$ and $v$ of fixed length $\norm{u}_2$ and $\norm{v}_2$, the inner product $u^Tv$ is maximized when $u = \frac{\norm{u}_2}{\norm{v}_2}v$, i.e. when they point in the same direction (this can be proven using the $\cos$ formula for the inner product). Therefore for a fixed vector $v$, the unit vector $u$ which maximizes $u^TDv$ for some diagonal matrix must point in the same direction as $Dv$. Therefore for a given $v$, $u$ must point in the $Dv$ direction, while for a given $u$, $v$ must point in the $Du$ direction. At the maximum over all $u$ and $v$, both must hold, else we could vary the one where it doesn't to improve the maximum. However if $u = c(Dv)$ for some constant $c$ then $v = \frac{1}{c}D^{-1}u$. However $v = \alpha(Du)$ for some constant $\alpha$. Therefore $u = c\alpha D^2u$ and each individual element is $u_i = c\alpha D_{ii}u_i$. Therefore, for each $i$ either $c\alpha D_{ii} = 1$ or $u_i=0$. Let $I$ be the set oThe attained maximum value is $\alpha u^TDu$
+ 
+
+
+
+\pagebreak
+
+%%=========== PROBLEM 3 ============= UNFINISHED ============%%
+\begin{problem}[]
+What are the singular values of an orthogonal projection?
+\end{problem}
+
+We know that all singular values are non-negative real numbers. We also know that orthgonal projections are defined by $AA^* = I$. Let $A = U\Sigma V^*$. Then $AA^* = U\Sigma V^* V\Sigma U^* = \Sigma^2$ = I. Since the singular values are real we can rule out complex units and since the singular values are non-negative we can rule out -1 so the singular values are all 1.
+
+
+
+%%=========== PROBLEM 4 ============= UNFINISHED ============%%
+\begin{problem}[]
+Show that for a given norm $\kappa(\bm{AB}) \leq \kappa(\bm{A})\kappa(\bm{B})$ and that $\kappa(\alpha\bm{A}) = \kappa(\bm{A})$ for a given (nonzero) constant $\alpha$.
+\end{problem}
+
+For any induced matrix norm (such as the $p$-norms) it is defined that $\norm{A} = \max_{u\in\R^n} \frac{\norm{Au}}{\norm{u}}$. Using this definition we can see that:
+\begin{align*}
+\norm{AB} & = \max_{u\in\R^n} \frac{\norm{ABu}}{\norm{u}} \\
+& = \max_{u\in\R^n} \frac{\norm{A(Bu)}}{\norm{Bu}}\frac{\norm{Bu}}{\norm{u}} \\
+& \leq \max_{v\in\R^n} \frac{\norm{Av}}{\norm{v}} \max_{u\in\R^n}\frac{\norm{Bu}}{\norm{u}} \\
+& = \norm{A}\norm{B}.
+\end{align*}
+In essence this is true because in the latter expression we are free to maximize over both $u$ and $v$ rather than requiring that $v = Bu$. Furthermore,
+\begin{align*}
+\norm{\alpha A} & = \max_{u\in \R^n} \frac{\norm{\alpha A u}}{\norm{u}} \\
+& = \max_{u\in \R^n} \frac{\alpha\norm{Au}}{\norm{u}} \\
+& = \alpha \max_{u\in\R^n} \frac{\norm{Au}}{\norm{u}} \\
+& = \alpha \norm{A}
+\end{align*}
+This is different from the stated problem so either I'm wrong or there's a typo.
+	
+
+%%=========== PROBLEM 5 ============= UNFINISHED ============%%
+\begin{problem}[]
+Write a python or matlab script that does an $LU$ decomposition (including pivoting). 
+\end{problem}
+
+See attached python script.
+
+% \bibliography{}
+% \bibliographystyle{plain}
+
+\end{document}
